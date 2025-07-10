@@ -1,2 +1,2 @@
 # regtt
-closed regiistry application
+closed registry application
