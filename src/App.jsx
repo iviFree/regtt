@@ -220,7 +220,7 @@ function App() {
               <p className="codeLegend">
                 Tu registro ha sido exitoso y se ha enviado a tu correo electrónico registrado.<br />Este código es único e intransferible.<br />
                 Guárdalo para tu acceso al evento.</p>
-                <a href={PDFSpanish} target="_blank" rel="noopener noreferrer" className='tyc'>Terminos y Condiciones Español</a><br/>
+                <a href={PDFSpanish} target="_blank" rel="noopener noreferrer" className='tyc'>Términos y Condiciones Español</a><br/>
                 <a href={PDFPor} target="_blank" rel="noopener noreferrer" className='tyc'>Terminos y Condiciones Portugues</a><br/>
                 <a href={PDFEnglish} target="_blank" rel="noopener noreferrer" className='tyc'>Rules English</a><br/>
 
