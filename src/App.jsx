@@ -4,6 +4,10 @@ import emailjs from '@emailjs/browser'
 import FullScreenLoader from './components/FullScreenLoader.jsx'
 import logoLive from './assets/img/tikTokCopaLive-LogoHeader.png'
 import tiktokCopaLiveLogo from './assets/img/tikTokCopaLive-Logo.png'
+import PDFEnglish from './assets/docs/copaLiveRules-ENG.pdf'
+import PDFSpanish from './assets/docs/reglamentoCopaLIVE-ESP.pdf'
+import PDFPor from './assets/docs/regulamentoCopaLIVE-Por..pdf'
+
 
 function App() {
   const [email, setEmail] = useState('')
@@ -212,11 +216,14 @@ function App() {
         <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
           {accessCode ? (
             <div className="text-center">
-              <h1 className='codeReg'><span>Tu codigo de registro es:</span><br/><span className='accessCode'>{accessCode}</span></h1>
+              <h1 className='codeReg'><span>Tu código de registro es:</span><br/><span className='accessCode'>{accessCode}</span></h1>
               <p className="codeLegend">
                 Tu registro ha sido exitoso y se ha enviado a tu correo electrónico registrado.<br />Este código es único e intransferible.<br />
-                Guárdalo para tu acceso al evento.
-              </p>
+                Guárdalo para tu acceso al evento.</p>
+                <a href={PDFSpanish} target="_blank" rel="noopener noreferrer" className='tyc'>Terminos y Condiciones Español</a><br/>
+                <a href={PDFPor} target="_blank" rel="noopener noreferrer" className='tyc'>Terminos y Condiciones Portugues</a><br/>
+                <a href={PDFEnglish} target="_blank" rel="noopener noreferrer" className='tyc'>Rules English</a><br/>
+
             </div>
           ) : !isAuthorized ? (
             <form onSubmit={handleVerify} className='d-flex flex-column justify-content-center'>

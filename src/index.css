@@ -124,3 +124,9 @@ form button[type="submit"]:focus {
   color: rgba(255, 255, 255, 1);
   line-height: 190%;
 }
+.tyc {
+  font-family: "Boldonse", system-ui;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 1);
+  line-height: 120%;
+}
