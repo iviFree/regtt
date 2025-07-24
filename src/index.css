@@ -1,3 +1,9 @@
+.boldonse-regular {
+  font-family: "Boldonse", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
   margin: 0 !important;
   padding: 0 !important;
@@ -7,6 +13,7 @@ body {
     no-repeat;
   background-size: cover;
   overflow-x: hidden;
+  font-family: "Boldonse", system-ui;
 }
 .logoLive {
   margin-bottom: 40px;
@@ -29,4 +36,91 @@ body {
 .soonContainer img {
   max-width: 884px;
   width: 100%;
+}
+form h1 {
+  font-family: "Boldonse", system-ui;
+  font-size: 60px;
+  line-height: 150%;
+  margin-top: 50px;
+  margin-bottom: 60px;
+  color: #ffffff;
+}
+form label {
+  font-family: "Boldonse", system-ui;
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+form input {
+  font-family: "Boldonse", system-ui;
+  font-size: 18px !important;
+  margin-bottom: 10px;
+  color: #ba1558 !important;
+}
+form button[type="submit"] {
+  background: #ff1155;
+  font-family: "Boldonse", system-ui;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #ffffff;
+  text-transform: uppercase;
+  max-width: 450px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 20px 40px;
+  border-radius: 37px;
+  border: none;
+}
+form button[type="submit"]:hover {
+  background: #ff1155;
+  font-family: "Boldonse", system-ui;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #ffffff;
+  text-transform: uppercase;
+  max-width: 450px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 20px 40px;
+  border-radius: 37px;
+  border: none;
+}
+form button[type="submit"]:focus {
+  background: #ff1155;
+  font-family: "Boldonse", system-ui;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #ffffff;
+  text-transform: uppercase;
+  max-width: 450px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 20px 40px;
+  border-radius: 37px;
+  border: none;
+}
+.text-danger {
+  color: #ffffff !important;
+  font-family: "Boldonse", system-ui;
+}
+.codeReg {
+  margin-top: 50px;
+  font-family: "Boldonse", system-ui;
+  font-size: 25px;
+  color: rgba(255, 255, 255, 1);
+  line-height: 150%;
+}
+.accessCode {
+  margin-top: 15px;
+  display: block;
+  font-family: "Boldonse", system-ui;
+  font-size: 45px;
+  color: rgba(255, 255, 255, 1);
+  line-height: 150%;
+}
+.codeLegend {
+  font-family: "Boldonse", system-ui;
+  font-size: 25px;
+  color: rgba(255, 255, 255, 1);
+  line-height: 190%;
 }

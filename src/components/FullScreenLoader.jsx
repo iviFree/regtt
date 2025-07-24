@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
+import backgroundImage from '../assets/img/tiktokCopaLive-Back.jpg'
 
 library.add(fas)
 
@@ -10,12 +11,12 @@ const loaderStyle = {
   left: 0,
   width: '100vw',
   height: '100vh',
-  backgroundColor: '#1e1e1e',
+  backgroundImage: {backgroundImage},
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   zIndex: 9999,
-  color: 'white',
+  color: '#00f7ef',
   fontSize: '3rem',
   fontFamily: 'Arial',
 }

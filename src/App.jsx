@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { supabase } from './supabase'
+import emailjs from '@emailjs/browser'
 import FullScreenLoader from './components/FullScreenLoader.jsx'
+import logoLive from './assets/img/tikTokCopaLive-LogoHeader.png'
+import tiktokCopaLiveLogo from './assets/img/tikTokCopaLive-Logo.png'
 
 function App() {
   const [email, setEmail] = useState('')
@@ -123,6 +126,24 @@ function App() {
     return code
   }
 
+  const sendConfirmationEmail = async (name, email, code) => {
+    try {
+      await emailjs.send(
+        'service_0nw3dxn',
+        'template_jqh2hgq',
+        {
+          name,
+          email,
+          code,
+        },
+        '6Sc8dj2rDZFi389qd'
+      )
+      console.log('Correo enviado')
+    } catch (error) {
+      console.error('Error enviando correo:', error)
+    }
+  }
+
   const handleRegister = async (e) => {
     e.preventDefault()
     setError('')
@@ -166,84 +187,87 @@ function App() {
       return
     }
 
+    await sendConfirmationEmail(fullName, email, code)
+
     setLoading(false)
     setAccessCode(code)
   }
 
   return (
-    <div style={{ padding: '2rem', fontFamily: 'Arial' }}>
+    <div className="container-fluid" style={{ fontFamily: 'Arial' }}>
       {loading && <FullScreenLoader />}
 
-      {accessCode ? (
-        <div className="text-center">
-          <h1 style={{ fontSize: '3rem' }}>{accessCode}</h1>
-          <p style={{ fontSize: '1.1rem', marginTop: '1rem' }}>
-            Tu registro ha sido exitoso. Este código es <strong>único e intransferible</strong>.  
-            Guárdalo para tu acceso al evento.
-          </p>
+      <div className="row justify-content-center p-4">
+        {/* Primera columna: Logo TikTok Live */}
+        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 pe-md-0 pe-lg-5 pe-xl-5 pe-xxl-5 imagecontainer logoLive d-flex flex-row justify-content-center justify-content-sm-center justify-content-md-center justify-content-lg-end">
+          <img src={logoLive} alt="TikTok Live" />
         </div>
-      ) : !isAuthorized ? (
-        <form onSubmit={handleVerify}>
-          <h1>Registro de Invitados</h1>
-          <label>Correo electrónico:</label><br />
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => {
-              const input = e.target.value.trim()
-              const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
-              if (
-                emailRegex.test(input) &&
-                !input.includes('<') &&
-                !input.includes('>') &&
-                !input.toLowerCase().includes('script') &&
-                !input.includes('{') &&
-                !input.includes('}')
-              ) {
-                setEmail(input)
-                setError('')
-              } else {
-                setEmail(input)
-                setError('Correo inválido o sospechoso.')
-              }
-            }}
-            required
-          /><br /><br />
-          <button type="submit">Verificar correo</button><br /><br />
-          {error && <p style={{ color: 'red' }}>{error}</p>}
-        </form>
-      ) : (
-        <form onSubmit={handleRegister}>
-          <h1>Completa tu registro</h1>
+        {/* Segunda columna: Imagen TikTok Copa Live */}
+        <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 imagecontainer logoSoonContainer mb-5">
+          <img src={tiktokCopaLiveLogo} alt="Logo TikTok Copa Live" />
+        </div>
 
-          <label>Correo electrónico:</label><br />
-          <input type="email" value={email} disabled /><br /><br />
+        {/* Tercera columna: Formulario de registro */}
+        <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+          {accessCode ? (
+            <div className="text-center">
+              <h1 className='codeReg'><span>Tu codigo de registro es:</span><br/><span className='accessCode'>{accessCode}</span></h1>
+              <p className="codeLegend">
+                Tu registro ha sido exitoso y se ha enviado a tu correo electrónico registrado.<br />Este código es único e intransferible.<br />
+                Guárdalo para tu acceso al evento.
+              </p>
+            </div>
+          ) : !isAuthorized ? (
+            <form onSubmit={handleVerify} className='d-flex flex-column justify-content-center'>
+              <h1>REGÍSTRATE AHORA</h1>
+              <label>E-MAIL:</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="form-control"
+                />
+                {error && <p className="text-danger">{error}</p>}
+              <button type="submit" className="btn btn-primary">Verificar correo</button><br /><br />
+              
+            </form>
+          ) : (
+            <form onSubmit={handleRegister}>
+              <h1>Completa tu registro</h1>
 
-          <label>Nombre completo:</label><br />
-          <input
-            type="text"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            required
-          /><br /><br />
+              <label>Correo electrónico:</label><br />
+              <input type="email" value={email} disabled className="form-control" /><br />
 
-          <label>Usuario de TikTok:</label><br />
-          <input
-            type="text"
-            value={tiktokUser}
-            onChange={(e) => {
-              const input = e.target.value
-              if (!input.startsWith('@')) return
-              setTiktokUser(input)
-            }}
-            required
-          /><br /><br />
+              <label>Nombre completo:</label><br />
+              <input
+                type="text"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                required
+                className="form-control"
+              /><br />
 
-          <button type="submit">Guardar registro</button><br /><br />
-          {error && <p style={{ color: 'red' }}>{error}</p>}
-        </form>
-      )}
+              <label>Usuario de TikTok:</label><br />
+              <input
+                type="text"
+                value={tiktokUser}
+                onChange={(e) => {
+                  const input = e.target.value
+                  if (!input.startsWith('@')) return
+                  setTiktokUser(input)
+                }}
+                required
+                className="form-control"
+              /><br />
+
+              <button type="submit" className="btn btn-success">Guardar registro</button><br /><br />
+              {error && <p className="text-danger">{error}</p>}
+            </form>
+          )}
+        </div>
+      </div>
     </div>
   )
 }
