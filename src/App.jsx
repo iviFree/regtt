@@ -6,8 +6,7 @@ import logoLive from './assets/img/tikTokCopaLive-LogoHeader.png'
 import tiktokCopaLiveLogo from './assets/img/tikTokCopaLive-Logo.png'
 import PDFEnglish from './assets/docs/copaLiveRules-ENG.pdf'
 import PDFSpanish from './assets/docs/reglamentoCopaLIVE-ESP.pdf'
-import PDFPor from './assets/docs/regulamentoCopaLIVE-Por..pdf'
-
+import PDFPor from './assets/docs/regulamentoCopaLIVE-Por.pdf'
 
 function App() {
   const [email, setEmail] = useState('')
@@ -17,6 +16,14 @@ function App() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [accessCode, setAccessCode] = useState('')
+
+  function changeLanguage(lang) {
+    const select = document.querySelector('select.goog-te-combo')
+    if (select) {
+      select.value = lang
+      select.dispatchEvent(new Event('change'))
+    }
+  }
 
   const isValidFullName = (name) => {
     const regex = /^[a-zA-ZÀ-ÿ\s]{4,}$/
@@ -199,20 +206,20 @@ function App() {
 
   return (
     <div className="container-fluid" style={{ fontFamily: 'Arial' }}>
+      <div id="google_translate_element" style={{ display: 'none' }}></div>
+      <div className="text-end mt-2 mb-4 notranslate">
+        <button onClick={() => changeLanguage('es')} className="btn btn-light me-2 notranslate">ES</button>
+        <button onClick={() => changeLanguage('en')} className="btn btn-light me-2 notranslate">EN</button>
+        <button onClick={() => changeLanguage('pt')} className="btn btn-light notranslate">BR</button>
+      </div>
       {loading && <FullScreenLoader />}
-
       <div className="row justify-content-center p-4">
-        {/* Primera columna: Logo TikTok Live */}
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 pe-md-0 pe-lg-5 pe-xl-5 pe-xxl-5 imagecontainer logoLive d-flex flex-row justify-content-center justify-content-sm-center justify-content-md-center justify-content-lg-end">
           <img src={logoLive} alt="TikTok Live" />
         </div>
-
-        {/* Segunda columna: Imagen TikTok Copa Live */}
         <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 imagecontainer logoSoonContainer mb-5">
           <img src={tiktokCopaLiveLogo} alt="Logo TikTok Copa Live" />
         </div>
-
-        {/* Tercera columna: Formulario de registro */}
         <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
           {accessCode ? (
             <div className="text-center">
@@ -223,6 +230,7 @@ function App() {
                 <a href={PDFSpanish} target="_blank" rel="noopener noreferrer" className='tyc'>Términos y Condiciones Español</a><br/>
                 <a href={PDFPor} target="_blank" rel="noopener noreferrer" className='tyc'>Terminos y Condiciones Portugues</a><br/>
                 <a href={PDFEnglish} target="_blank" rel="noopener noreferrer" className='tyc'>Rules English</a><br/>
+                <a href='https://www.tiktok.com/legal/page/row/privacy-policy/es' target="_blank" rel="noopener noreferrer" className='tyc'>Politica de privacidad</a><br/>
 
             </div>
           ) : !isAuthorized ? (

@@ -14,6 +14,7 @@ body {
   background-size: cover;
   overflow-x: hidden;
   font-family: "Boldonse", system-ui;
+  background-attachment: fixed;
 }
 .logoLive {
   margin-bottom: 40px;
@@ -129,4 +130,25 @@ form button[type="submit"]:focus {
   font-size: 10px;
   color: rgba(255, 255, 255, 1);
   line-height: 120%;
+}
+
+/* Oculta el banner superior de Google Translate */
+.goog-te-banner-frame.skiptranslate,
+body > .skiptranslate {
+  display: none !important;
+}
+body {
+  top: 0px !important;
+}
+
+/* Oculta el badge inferior de Google Translate */
+.goog-logo-link {
+  display: none !important;
+}
+.goog-te-gadget {
+  color: transparent !important;
+}
+/* Prevenir traducción de elementos específicos */
+.notranslate {
+  translate: no;
 }
