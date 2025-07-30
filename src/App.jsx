@@ -205,12 +205,14 @@ function App() {
   }
 
   return (
-    <div className="container-fluid" style={{ fontFamily: 'Arial' }}>
-      <div id="google_translate_element" style={{ display: 'none' }}></div>
-      <div className="text-end mt-2 mb-4 notranslate">
-        <button onClick={() => changeLanguage('es')} className="btn btn-light me-2 notranslate">ES</button>
-        <button onClick={() => changeLanguage('en')} className="btn btn-light me-2 notranslate">EN</button>
-        <button onClick={() => changeLanguage('pt')} className="btn btn-light notranslate">BR</button>
+    <div className="container-fluid">
+      <div className='row'>
+        <div id="google_translate_element" style={{ display: 'none' }}></div>
+        <div className="text-end mt-2 mb-4 px-4 notranslate">
+          <button onClick={() => changeLanguage('es')} className="btn btn-light me-2 notranslate">ES</button>
+          <button onClick={() => changeLanguage('en')} className="btn btn-light me-2 notranslate">EN</button>
+          <button onClick={() => changeLanguage('pt')} className="btn btn-light notranslate">BR</button>
+        </div>
       </div>
       {loading && <FullScreenLoader />}
       <div className="row justify-content-center p-4">
