@@ -23,7 +23,7 @@ function CheckAccess() {
       .maybeSingle();
 
     if (error) {
-      console.error('🚫 Error consultando código:', error);
+      console.error('Error consultando código:', error);
       setStatus('error');
       setIsChecking(false);
       return;
@@ -41,7 +41,7 @@ function CheckAccess() {
       .eq('id', data.id);
 
     if (updateError) {
-      console.error('❌ Error actualizando código:', updateError);
+      console.error('Error actualizando código:', updateError);
       setStatus('update_error');
     } else {
       setStatus('valid');
