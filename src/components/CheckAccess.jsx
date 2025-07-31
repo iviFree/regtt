@@ -57,14 +57,6 @@ function CheckAccess() {
 
   return (
     <div className='container-fluid'>
-      <div className='row'>
-        <div id="google_translate_element" style={{ display: 'none' }}></div>
-        <div className="text-end mt-2 mb-2 notranslate">
-          <button onClick={() => changeLanguage('es')} className="btn btn-light me-2 notranslate">ES</button>
-          <button onClick={() => changeLanguage('en')} className="btn btn-light me-2 notranslate">EN</button>
-          <button onClick={() => changeLanguage('pt')} className="btn btn-light notranslate">BR</button>
-        </div>
-      </div>
       {/* Logo TikTok LIVE */}
       <div className="row justify-content-center p-4">
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 pe-md-0 pe-lg-5 pe-xl-5 pe-xxl-5 imagecontainer logoLive d-flex flex-row justify-content-center justify-content-sm-center justify-content-md-center justify-content-lg-end">
@@ -74,7 +66,7 @@ function CheckAccess() {
           <img src={tiktokCopaLiveLogo} alt="Logo TikTok Copa Live" />
         </div>
         <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 d-flex  flex-column justify-content-center">
-          <label>Ingresa tu código de acceso:</label>
+          <label>Enter your access code:</label>
           {status === null && (
               <>
               <input
@@ -87,7 +79,7 @@ function CheckAccess() {
                   onClick={handleCheckCode}
                   disabled={isChecking}
                 >
-                  {isChecking ? 'Verificando...' : 'Verificar código'}
+                  {isChecking ? 'Verifying...' : 'Verify code'}
                 </button>
               </>
             )}
